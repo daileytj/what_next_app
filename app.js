@@ -86,7 +86,13 @@ $(document).ready(function(){
 });
 
 $(".user_search_string_submit").click(function(event){
-  user_search_string = $(".user_search_string").val();
   event.preventDefault();
+  user_search_string = $(".user_search_string").val();
+  $(".recommendations").html("");
+  user_recommendations_array = [];
   getDataFromTasteKid(user_search_string, storeTasteKidResults);
+  console.log("user_recommendations_array: " + user_recommendations_array);
+  if (user_recommendations_array == false){
+    $(".recommendations").append("<p>Sorry! No Recommendations Available, please search another Title</p>");
+  }
 });
