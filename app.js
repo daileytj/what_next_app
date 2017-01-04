@@ -58,7 +58,8 @@ function getDataFromGoogleBooks(searchTerm, callback) {
 }
 
 function displayRecommendations(data){
-  renderedHTML = "";
+  var renderedHTML = "";
+  var errorMessage = "<p>Error</p>";
   if (data.items){
     data.items.forEach(function(item){
       renderedHTML += "<img src=" + item.volumeInfo.imageLinks.thumbnail + "/>";
@@ -78,6 +79,19 @@ function displayRecommendations(data){
       renderedHTML += "<p>Description: " + item.volumeInfo.description + "</p>";
     });
   }
+
+  // ISSUE: LOGIC NOT WORKING!
+  
+  //else{
+  //  $(".recommendations").append(errorMessage);
+  //}
+
+  //if(!data.items){
+  //  $(".recommendations").append(errorMessage);
+  //}
+
+  // ISSUE: LOGIC NOT WORKING!
+
   $(".recommendations").append(renderedHTML);
 }
 
@@ -87,12 +101,15 @@ $(document).ready(function(){
 
 $(".user_search_string_submit").click(function(event){
   event.preventDefault();
-  user_search_string = $(".user_search_string").val();
   $(".recommendations").html("");
+  user_search_string = $(".user_search_string").val();
   user_recommendations_array = [];
   getDataFromTasteKid(user_search_string, storeTasteKidResults);
-  console.log("user_recommendations_array: " + user_recommendations_array);
-  if (user_recommendations_array == false){
-    $(".recommendations").append("<p>Sorry! No Recommendations Available, please search another Title</p>");
-  }
+
+  // ISSUE :error message always prints!
+  //if($(".recommendations").html() === ""){
+  //      $(".recommendations").html("<p>Sorry! No Recommendations Available, please search another Title</p>");
+  //}
+  // ISSUE: error message always prints!
+
 });
