@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>What Next?</title>
-  </head>
-  <body>
-    <h1>What Next?</h1>
-    <form>
-      <label for="user_search_string">Enter the title of the last book you read for recommendations</label>
-      <input type="text"  class = "user_search_string" name="user_search_string" value="" placeholder="e.g. Alice In Wonderland"/>
-      <button type = "submit" name = "user_search_string_submit" class = "user_search_string_submit">Submit</button>
-    </form>
-    <div class = "recommendations">
 
-    </div>
+<head>
+    <meta charset="utf-8">
+    <title>What's Next?</title>
+    <meta name="description" content="Book recommendations at the push of a button." />
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Reem+Kufi|Roboto+Condensed|PT+Serif" rel="stylesheet">
+</head>
+
+<body>
+    <header class="main_header">
+        <h1>What's Next?</h1>
+    </header>
+    <main class="content">
+        <form class="book_recommendation_form" name="book_recommendation_form">
+            <p>What's The Title Of The Last Book You Enjoyed?</p>
+            <input type="text" class="user_search_string" name="user_search_string" value="" placeholder="e.g. Alice In Wonderland" />
+            <button type="submit" name="user_search_string_submit" class="user_search_string_submit">What's Next?</button>
+        </form>
+        <section class="recommendations hidden">
+            <div class="item_wrapper">
+                <header class="recommendation_header">
+                    <h2 class="title">Generic Title</h2>
+                </header>
+                <div class="thumbnail_section">
+                    <img class="book_thumbnail" src="http://placehold.it/128x198" />
+                    <p class="book_rating">Rating: 3/5</p>
+                    <button class="buy_button"><a class="buy_link" href="#">Buy</a></button>
+                </div>
+                <div class="book_information_section">
+                    <p class="author">John Doe</p>
+                    <p class="publication_info">Publishing Co., Jan 1, 2020 </p>
+                    <p class="book_specs">Fiction - 253 Pages</p>
+                </div>
+                <div class="book_description_section">
+                    <p class="book_description">Description blah blah blah</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Designed and Developed by: Thomas Dailey | &copy; 2017</p>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script type="text/javascript" src="app.js"></script>
-  </body>
+</body>
+
 </html>
