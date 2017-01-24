@@ -10,7 +10,7 @@ CSS
 JavaScript
 jQuery
 
-The application functionality will allows a user to input the last book they read and returns suggestions for other books they may want to read next.
+The application functionality allows a user to input the last book they read and returns suggestions for other books they may enjoy reading next.
 
 User Flow:
 1. Input last book a user has read
