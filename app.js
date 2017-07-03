@@ -7,6 +7,8 @@ var GOOGLE_BOOKS_BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 var GOOGLE_BOOKS_API_KEY = 'AIzaSyAdKIAWRNbTFTI2Xv_KdL_VAQdwvBjHOs8';
 
 // Functions to check that called api key has content
+
+
 function checkImages(imageURL) {
     if (typeof imageURL === 'undefined' || imageURL == null) {
         return "http://placehold.it/128x198";
