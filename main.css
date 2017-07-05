@@ -35,14 +35,14 @@ a {
     display: table;
     color: #9E9E9E;
     font-family: 'Lobster', cursive;
-    font-size: 4em;
+    font-size: 3em;
     border: 3px solid #9E9E9E;
     margin: 0 auto;
     padding: 2px 10px;
 }
 
 .content {
-    padding-top: 152px;
+    padding-top: 122px;
 }
 
 .book_recommendation_form {
@@ -172,6 +172,21 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
+
+    .content {
+        padding-top: 152px;
+    }
+
+  .main_header h1 {
+      display: table;
+      color: #9E9E9E;
+      font-family: 'Lobster', cursive;
+      font-size: 4em;
+      border: 3px solid #9E9E9E;
+      margin: 0 auto;
+      padding: 2px 10px;
+  }
+
     .book_recommendation_form input{
         width: 70%;
     }
