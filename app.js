@@ -7,8 +7,6 @@ var GOOGLE_BOOKS_BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 var GOOGLE_BOOKS_API_KEY = 'AIzaSyAdKIAWRNbTFTI2Xv_KdL_VAQdwvBjHOs8';
 
 // Functions to check that called api key has content
-
-
 function checkImages(imageURL) {
     if (typeof imageURL === 'undefined' || imageURL == null) {
         return "http://placehold.it/128x198";
@@ -42,7 +40,6 @@ function getDataFromTasteKid(searchTerm, callback) {
         success: callback
     };
     var results = $.ajax(settings);
-    //console.log("results object: " , results);
 }
 
 function storeTasteKidResults(data) {
@@ -52,7 +49,6 @@ function storeTasteKidResults(data) {
     if (data.code == "400") {
         $(".recommendations").html("<p class = 'error'>Sorry! Database Query Limit Reached, Please Try Again Later!</p>");
     } else {
-        //console.log("data: ", data.Similar.Results.length);
         if (data.Similar.Results.length === 0) {
             $(".recommendations").html("<p class = 'error'>Sorry! No Recommendations Available, please search another Title</p>");
         } else {
@@ -60,12 +56,8 @@ function storeTasteKidResults(data) {
             if (data.Similar.Results) {
                 data.Similar.Results.forEach(function(item) {
                     tasteKidResults.push(item.Name);
-                    //console.log("taste kid results titles: " + tasteKidResults);
                 });
             }
-            //console.log(data);
-            //console.log(data.Similar.Results[0].Name);
-            //console.log("taste kid results titles: " + tasteKidResults);
             user_recommendations_array = tasteKidResults;
             user_recommendations_array.forEach(function(item) {
                 getDataFromGoogleBooks(item, displayRecommendations);
@@ -75,7 +67,6 @@ function storeTasteKidResults(data) {
 }
 
 function getDataFromGoogleBooks(searchTerm, callback) {
-    //console.log("search term: " , searchTerm);
     var settings = {
         url: GOOGLE_BOOKS_BASE_URL,
         data: {
@@ -88,7 +79,6 @@ function getDataFromGoogleBooks(searchTerm, callback) {
         success: callback
     };
     var googleBookResults = $.ajax(settings);
-    //console.log(googleBookResults);
 }
 
 function displayRecommendations(data) {
@@ -137,7 +127,6 @@ $(document).on('click', ".user_search_string_submit", function(event) {
     event.preventDefault();
     $(".recommendations").html("");
     user_search_string = $(".user_search_string").val();
-    //console.log("user search string: " + user_search_string);
     user_recommendations_array = [];
     getDataFromTasteKid(user_search_string, storeTasteKidResults);
     $(".recommendations").removeClass("hidden");
