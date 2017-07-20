@@ -5,7 +5,7 @@
 }
 
 html {
-    background-color: rgb(45, 45, 45);
+    background-color: #2d2d2d;
 }
 
 body {
@@ -25,14 +25,14 @@ a {
     position: fixed;
     height: auto;
     width: 100%;
-    background-color: rgb(45, 45, 45);
+    background-color: #2d2d2d;
     border-bottom: 3px solid #9E9E9E;
     text-align: center;
     padding: 30px 0;
 }
 
 .main_header h1 {
-    display: table;
+    display: inline-block;
     color: #9E9E9E;
     font-family: 'Lobster', cursive;
     font-size: 3em;
@@ -57,20 +57,21 @@ a {
     margin: 0 auto 30px auto;
     display: block;
     font-size: 1.3em;
-    color: rgb(45, 45, 45);
+    color: #2d2d2d;
 }
 
 p.input-prompt{
     margin-top: 60px;
 }
 
-.book_recommendation_form input, .book_recommendation_form button {
+.book_recommendation_form input,
+.book_recommendation_form button {
     display: block;
     margin: 0 auto 15px auto;
     width: 90%;
     font-size: 1.2em;
     padding: 3px;
-    border: 3px solid rgba(45, 45, 45, .7);
+    border: 3px solid rgba(#2d2d2d, 0.7);
     border-radius: 5px;
 }
 
@@ -78,9 +79,13 @@ p.input-prompt{
     width: 200px;
 }
 
-.book_recommendation_form input:focus, .book_recommendation_form button:active, .book_recommendation_form button:focus, .buy_button:active, .buy_button:focus {
+.book_recommendation_form input:focus,
+.book_recommendation_form button:active,
+.book_recommendation_form button:focus,
+.buy_button:active,
+.buy_button:focus {
     outline: none;
-    border-color: rgb(45, 45, 45);
+    border-color: #2d2d2d;
 }
 
 .book_recommendation_form button {
@@ -101,7 +106,7 @@ p.input-prompt{
 
 .item_wrapper:nth-child(2n+2) {
     background-color: #9E9E9E;
-    color: rgb(45, 45, 45);
+    color: #2d2d2d;
 }
 
 .item_wrapper {
@@ -113,7 +118,9 @@ p.input-prompt{
     margin: 10px auto;
 }
 
-.thumbnail_section, .book_information_section, .book_description_section {
+.thumbnail_section,
+.book_information_section,
+.book_description_section {
     margin-bottom: 15px;
 }
 
@@ -129,7 +136,7 @@ p.input-prompt{
     width: 40%;
     background-color: #00B0FF;
     padding: 2px;
-    border: 2px solid rgba(45, 45, 45, .7);
+    border: 2px solid rgba(#2d2d2d, 0.7);
     border-radius: 5px;
     margin: 5px auto 0 auto;
 }
@@ -156,7 +163,7 @@ footer {
     line-height: 40px;
     vertical-align: center;
     font-size: 1em;
-    background-color: rgb(45, 45, 45);
+    background-color: #2d2d2d;
     color: #9E9E9E;
     border-top: 3px solid #9E9E9E;
     text-align: center;
@@ -172,7 +179,6 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
-
     .content {
         padding-top: 152px;
     }
@@ -198,7 +204,8 @@ footer {
         width: 50%;
         margin-right: -10%;
     }
-    .thumbnail_section:before, .thumbnail_section:after {
+    .thumbnail_section:before,
+    .thumbnail_section:after {
         display: table;
         content: "";
         clear: both;

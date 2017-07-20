@@ -1,22 +1,21 @@
 // Declare Globals
 var user_search_string = "";
 var user_recommendations_array = [];
-var TASTEKID_BASE_URL = 'https://www.tastekid.com/api/similar';
-var TASTEKID_API_KEY = '253651-ThomasDa-7TFMY069';
-var GOOGLE_BOOKS_BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
-var GOOGLE_BOOKS_API_KEY = 'AIzaSyAdKIAWRNbTFTI2Xv_KdL_VAQdwvBjHOs8';
+var TASTEKID_BASE_URL = "https://www.tastekid.com/api/similar";
+var TASTEKID_API_KEY = "253651-ThomasDa-7TFMY069";
+var GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1/volumes";
+var GOOGLE_BOOKS_API_KEY = "AIzaSyAdKIAWRNbTFTI2Xv_KdL_VAQdwvBjHOs8";
 
 // Functions to check that called api key has content
 function checkImages(imageURL) {
-  if (typeof imageURL === 'undefined' || imageURL == null) {
-    return "http://placehold.it/128x198";
-  } else {
-    return imageURL;
+  if (imageURL.hasOwnProperty("imageLinks") && imageURL.imageLinks.hasOwnProperty("thumbnail")) {
+    return imageURL.imageLinks.thumbnail;
   }
+  return "http://placehold.it/128x198";
 }
 
 function checkTexts(textValue) {
-  if (typeof textValue === 'undefined' || textValue == null) {
+  if (typeof textValue === "undefined") {
     return "-";
   } else {
     return textValue;
@@ -58,8 +57,8 @@ function getDataFromGoogleBooks(searchTerm, callback) {
 }
 
 function displayRecommendations(data) {
-  //Return error code if "400" is returned by data object
-  if (data.code == "400") {
+  // Return error code if "400" is returned by data object
+  if (data.code === "400") {
     $(".recommendations").html("<p class = 'error'>Sorry! Database Query Limit Reached, Please Try Again Later!</p>");
   } else if (data.totalItems === 0) {
     $(".recommendations").html("<p class = 'error'>Some Error Message</p>");
@@ -72,7 +71,7 @@ function displayRecommendations(data) {
         renderedHTML += '<h2 class="title">' + checkTexts(item.volumeInfo.title) + '</h2>';
         renderedHTML += '</header>';
         renderedHTML += '<div class="thumbnail_section">';
-        renderedHTML += '<img class="book_thumbnail" src="' + checkImages(item.volumeInfo.imageLinks.thumbnail) + '"/>';
+        renderedHTML += '<img class="book_thumbnail" src="' + checkImages(item.volumeInfo) + '"/>';
         renderedHTML += '<p class="book_rating">Rating: ' + checkTexts(item.volumeInfo.averageRating) + '/5</p>';
         renderedHTML += '<button class = "buy_button"><a class="buy_link" target="_blank" href="' + checkTexts(item.volumeInfo.infoLink) + '">Buy</a></button>';
         renderedHTML += '</div>';
@@ -93,13 +92,12 @@ function displayRecommendations(data) {
 
 function storeTasteKidResults(data) {
   var tasteKidResults = [];
-  if (data.code == "400") {
-    $(".recommendations").html("<p class = 'error'>Sorry! Database Query Limit Reached, Please Try Again Later!</p>");
+  if (data.code === "400") {
+    $(".recommendations").html("<p class='error'>Sorry! Database Query Limit Reached, Please Try Again Later!</p>");
   } else {
-    if (data.Similar.Results.length === 0) {
-      $(".recommendations").html("<p class = 'error'>Sorry! No Recommendations Available, please search another Title</p>");
+    if (!data.Similar.Results.length) {
+      $(".recommendations").html("<p class='error'>Sorry! No Recommendations Available, please search another Title</p>");
     } else {
-
       if (data.Similar.Results) {
         var tasteKidResults = data.Similar.Results.map(function(item) {
           return item.Name
@@ -111,13 +109,13 @@ function storeTasteKidResults(data) {
   }
 }
 
-$(document).ready(function() {});
-
-$(document).on('click', ".user_search_string_submit", function(event) {
-  event.preventDefault();
-  $(".recommendations").html("");
-  user_search_string = $(".user_search_string").val();
-  user_recommendations_array = [];
-  getDataFromTasteKid(user_search_string, storeTasteKidResults);
-  $(".recommendations").removeClass("hidden");
+$(function() {
+  $(".user_search_string_submit").click(function(event) {
+    event.preventDefault();
+    $(".recommendations").html("");
+    user_search_string = $(".user_search_string").val();
+    user_recommendations_array = [];
+    getDataFromTasteKid(user_search_string, storeTasteKidResults);
+    $(".recommendations").removeClass("hidden");
+  });
 });
